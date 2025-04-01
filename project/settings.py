@@ -136,3 +136,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://upgraded-zebra-7vp7vqr4vv93wx9j-8000.app.github.dev',
+    'https://localhost:8000',
+    # Outras origens confiáveis (se houver)
+]

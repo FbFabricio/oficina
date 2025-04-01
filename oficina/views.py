@@ -5,8 +5,8 @@ from .models import Cliente
 from .forms import LoginForm
 
 # Create your views here.
-@login_required
-def contatos(request):
+# @login_required
+def listadecontatos(request):
     clientes = Cliente.objects.all()
     return render(request,'oficina/lista_contatos.html', {'clientes': clientes})
 
@@ -28,8 +28,8 @@ def login_view(request):
 
     return render(request, 'oficina/login.hmtl', {'form': form})
 
-@login_required
-def cadastro(request,HttpResponsePermantRedirect='contatos/'):
+# @login_required
+def cadastro(request):
     if request.method == 'POST':
         nome = request.POST.get('nome')
         carro = request.POST.get('carro')
@@ -38,7 +38,7 @@ def cadastro(request,HttpResponsePermantRedirect='contatos/'):
         # Criar e salvar no banco de dados
         Cliente.objects.create(nome=nome, carro=carro, placa=placa)
 
-        return redirect(HttpResponsePermantRedirect)  # Redireciona para a lista de veículos
+        return redirect('oficina/cadastro.html')  # Redireciona para a lista de veículos
 
     return render(request, 'oficina/cadastro.html')
 
